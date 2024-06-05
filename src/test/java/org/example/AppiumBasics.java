@@ -17,21 +17,7 @@ import java.net.MalformedURLException;
 public class AppiumBasics extends BaseText {
     @Test
     public void WifiSettingsName() throws MalformedURLException {
-//        AppiumDriverLocalService service = new AppiumServiceBuilder()
-//                .withAppiumJS(new File("C://Users//hp//AppData//Roaming//npm//node_modules//appium//build//lib//main.js"))
-//                .withIPAddress("127.0.0.1")
-//                .usingPort(4723)
-//                .build();
-//        service.start();
-//
-//        UiAutomator2Options options = new UiAutomator2Options();
-//        options.setDeviceName("Pixel 3a API 34");
-//        options.setApp("C://Programming//QaWorks//khan//src//test//java//resource//ApiDemos-debug.apk");
-//
-//        AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
-
         driver.findElement(AppiumBy.accessibilityId("Preference")).click();
-
     }
 }
 

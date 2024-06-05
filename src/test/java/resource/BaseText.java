@@ -6,10 +6,11 @@ import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
+
 
 public class BaseText {
 
@@ -23,19 +24,24 @@ public class BaseText {
                 .withIPAddress("127.0.0.1")
                 .usingPort(4723)
                 .build();
-//        service.start();
+        service.start();
 
         UiAutomator2Options options = new UiAutomator2Options();
         options.setDeviceName("Pixel 3a API 34");
         options.setApp("C://Programming//QaWorks//khan//src//test//java//resource//ApiDemos-debug.apk");
 
-        AndroidDriver driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
+        driver = new AndroidDriver(new URL("http://127.0.0.1:4723"), options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 
     @AfterClass
-    public void tearDown(){
-        driver.quit();
-        service.stop();
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
+        if (service != null) {
+            service.stop();
+        }
     }
 
 }
